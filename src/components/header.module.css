@@ -1,7 +1,3 @@
-.navLink {
-  color: grey;
-}
-
-.navLink:hover {
-  color: blue;
+.buttonSelection {
+  text-decoration: underline;
 }

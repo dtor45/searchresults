@@ -1,42 +1,31 @@
 import React from "react";
-// import * as searchResultsService from "../services/searchResultsService";
-import Swal from "sweetalert2";
+import { Row } from "reactstrap";
+import SingleResult from "./SingleResult.jsx";
 
 class Results extends React.Component {
-    state = {
-        results: []
-    }
+  state = {
+    results: []
+  };
 
-    componentDidMount() {
-        // searchResultsService.getAll().then(this.getAllSuccess).catch(this.getAllError)
-    }
+  displayResults = () => {
+    let { results } = this.props;
+    let display = results.map(this.mapSingleResult);
+    return display;
+  };
 
-    getAllSuccess = response => {
-        Swal.fire({
-            title: "Success!",
-            icon: "success"
-        })
+  mapSingleResult = resultObj => {
+    return (
+      <SingleResult key={`SingleResult-${resultObj.id}`} obj={resultObj} />
+    );
+  };
 
-        console.log(response);
-    }
-
-    getAllError = err => {
-        Swal.fire({
-            title: "Error!",
-            icon: "error"
-        })
-
-        console.log(err)
-    }
-    
-    render() {
-        return (
-            <div className="d-flex justify-content-between">
-                <h3>Hello there!</h3>
-                <h3>Hello again!</h3>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <Row className="mt-3">
+        {!this.props.results ? <p>Loading</p> : this.displayResults()}
+      </Row>
+    );
+  }
 }
 
 export default Results;

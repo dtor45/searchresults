@@ -1,16 +1,14 @@
 import axios from "axios";
 
 const getAll = () => {
-    const url = "https://jsonplaceholder.typicode.com/photos";
+  const url = "http://localhost:3000/products";
 
-    const config = {
-        method: "GET",
-        url: url
-    }
+  const config = {
+    method: "GET",
+    url: url
+  };
 
-    return axios(config);
+  return axios(config);
 };
 
-export {
-    getAll
-};
+export { getAll };
